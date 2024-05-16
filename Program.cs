@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 class Set
@@ -115,6 +115,11 @@ class Set
         }
         Console.WriteLine();
     }
+
+    public void Dispose()
+    {
+        Console.WriteLine("Деструктор вызван");
+    }
 }
 
 class Program
@@ -147,9 +152,13 @@ class Program
             }
         }
 
+        
+
         Set unionSet = set1.Union(set2);
         Console.WriteLine("Объединение:");
         unionSet.Print();
+
+        
 
         Set intersectionSet = set1.Intersection(set2);
         Console.WriteLine("Пересечения:");
@@ -159,8 +168,28 @@ class Program
         Console.WriteLine("Разность:");
         differenceSet.Print();
 
+
         Console.WriteLine("Набор 1 включает в себя набор 2: " + set1.Includes(set2));
+        Console.WriteLine("Набор 2 включает в себя набор 1: " + set2.Includes(set1));
         Console.WriteLine("Набор 1 пустой: " + set1.IsEmpty());
+        Console.WriteLine("Набор 2 пустой: " + set2.IsEmpty());
         Console.WriteLine("Набор 1 идентичный набору 2: " + set1.Equals(set2));
+
+        set1.Dispose();
+        set1 = null;
+
+        set2.Dispose();
+        set2 = null;
+
+        unionSet.Dispose();
+        unionSet = null;
+
+        intersectionSet.Dispose();
+        intersectionSet = null;
+
+        differenceSet.Dispose();
+        differenceSet = null;
+
+        GC.Collect();
     }
 }
