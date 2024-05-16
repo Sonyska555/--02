@@ -9,7 +9,7 @@ class Set
     {
         elements = new List<int>();
     }
-
+    
     public Set(List<int> elements)
     {
         this.elements = elements;
@@ -115,7 +115,7 @@ class Set
         }
         Console.WriteLine();
     }
-
+//показывает что деструктор вызван
     public void Dispose()
     {
         Console.WriteLine("Деструктор вызван");
@@ -170,8 +170,10 @@ class Program
 
 
         Console.WriteLine("Набор 1 включает в себя набор 2: " + set1.Includes(set2));
+        //добавлено включение набора 2 в набор 1
         Console.WriteLine("Набор 2 включает в себя набор 1: " + set2.Includes(set1));
         Console.WriteLine("Набор 1 пустой: " + set1.IsEmpty());
+        //добавлена проверка набора 2 на пустоту
         Console.WriteLine("Набор 2 пустой: " + set2.IsEmpty());
         Console.WriteLine("Набор 1 идентичный набору 2: " + set1.Equals(set2));
 
